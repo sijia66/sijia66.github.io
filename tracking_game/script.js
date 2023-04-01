@@ -15,7 +15,8 @@ let mouseY = 0;
 const colors = ['#00FF00', // green
                 '#0D98BA' // blue
                 ];
-let colorIndex = 0;
+let target_color_index = 0;
+let mouse_color_index = 0;
 
 
 function drawSphere(xPos, yPos, color = '#FF6633') {
@@ -38,8 +39,8 @@ function update() {
 
 
 
-    drawSphere(x, canvas.height / 2, colors[colorIndex]);
-    drawSphere(mouseX, mouseY);
+    drawSphere(x, canvas.height / 2, colors[target_color_index]);
+    drawSphere(mouseX, mouseY, colors[mouse_color_index]);
 }
 
 canvas.addEventListener('mousemove', function(event) {
@@ -48,10 +49,15 @@ mouseX = event.clientX - rect.left;
 mouseY = event.clientY - rect.top;
 });
 
+canvas.addEventListener('click', function(event) {
+    // rotate color
+    mouse_color_index = (mouse_color_index + 1) % colors.length;
+});
+
 
 function change_color() {
     // rotate color
-    colorIndex = (colorIndex + 1) % colors.length;
+    target_color_index = (target_color_index + 1) % colors.length;
 }
 
 setInterval(update, 10);
