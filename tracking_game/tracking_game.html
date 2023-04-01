@@ -6,42 +6,6 @@
   </head>
   <body>
     <canvas id="canvas" width="400" height="400"></canvas>
-    <script>
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        let x = 50;
-        let dx = 1;
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        function drawSphere(xPos, yPos) {
-
-            ctx.beginPath();
-            ctx.arc(xPos, yPos, 50, 0, Math.PI * 2);
-            ctx.stroke();
-        }
-
-        function update() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (x + dx > canvas.width - 50 || x + dx < 50) {
-                dx = -dx;
-        }
-
-        x += dx;
-
-        drawSphere(x, canvas.height / 2);
-        drawSphere(mouseX, mouseY);
-        }
-
-        canvas.addEventListener('mousemove', function(event) {
-        const rect = canvas.getBoundingClientRect();
-        mouseX = event.clientX - rect.left;
-        mouseY = event.clientY - rect.top;
-        });
-
-        setInterval(update, 10);
-    </script>
+    <script src = 'script.js'></script>
   </body>
 </html>
