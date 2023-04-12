@@ -49,6 +49,13 @@ mouseX = event.clientX - rect.left;
 mouseY = event.clientY - rect.top;
 });
 
+canvas.addEventListener('touchmove', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    x = e.touches[0].clientX - rect.left;
+    y = e.touches[0].clientY - rect.top;
+    draw();
+  });
+
 canvas.addEventListener('click', function(event) {
     // rotate color
     mouse_color_index = (mouse_color_index + 1) % colors.length;
