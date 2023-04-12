@@ -44,16 +44,15 @@ function update() {
 }
 
 canvas.addEventListener('mousemove', function(event) {
-const rect = canvas.getBoundingClientRect();
-mouseX = event.clientX - rect.left;
-mouseY = event.clientY - rect.top;
+    const rect = canvas.getBoundingClientRect();
+    mouseX = event.clientX - rect.left;
+    mouseY = event.clientY - rect.top;
 });
 
 canvas.addEventListener('touchmove', function(e) {
     const rect = canvas.getBoundingClientRect();
-    x = e.touches[0].clientX - rect.left;
-    y = e.touches[0].clientY - rect.top;
-    draw();
+    mouseX = e.touches[0].clientX - rect.left;
+    mouseY = e.touches[0].clientY - rect.top;
   });
 
 canvas.addEventListener('click', function(event) {
