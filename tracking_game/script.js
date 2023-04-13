@@ -38,12 +38,18 @@ class SphereView {
       this.ctx.fillStyle = color;
       this.ctx.fill();
     }
+
+    drawHusky(xPos, yPos) {
+        // Draw the husky image at the given position
+        this.ctx.drawImage(huskyImg, xPos - 50, yPos-50, 100, 100);
+      }
   
     draw() {
       this.ctx.clearRect(0, 0, canvas.width, canvas.height);
   
       this.drawSphere(this.model.x, canvas.height / 2, this.model.colors[this.model.target_color_index]);
-      this.drawSphere(this.mouseX, this.mouseY, this.model.colors[this.mouse_color_index]);
+      this.drawHusky(this.mouseX, this.mouseY);
+      //this.drawSphere(this.mouseX, this.mouseY, this.model.colors[this.mouse_color_index]);
     }
   
     onMouseMove(event) {
@@ -103,16 +109,19 @@ class SphereView {
       this.view.onClick();
     }
   }
-  
-  const canvas = document.getElementById('canvas');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
-  const colors = ['#00FF00', '#0D98BA'];
-  const model = new SphereModel(50, 1, colors);
-  const view = new SphereView(canvas, model);
-  const controller = new SphereController(canvas, model, view);
-  
-  controller.start();
+
+const huskyImg = new Image();
+huskyImg.src = './assets/husky.jpg';
+
+const canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const colors = ['#00FF00', '#0D98BA'];
+const model = new SphereModel(50, 1, colors);
+const view = new SphereView(canvas, model);
+const controller = new SphereController(canvas, model, view);
+
+controller.start();
   
   
