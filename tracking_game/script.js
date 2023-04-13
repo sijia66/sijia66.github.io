@@ -37,22 +37,23 @@ function update() {
 
     x += dx;
 
-
-
     drawSphere(x, canvas.height / 2, colors[target_color_index]);
+    
     drawSphere(mouseX, mouseY, colors[mouse_color_index]);
+
 }
 
-canvas.addEventListener('mousemove', function(event) {
-    const rect = canvas.getBoundingClientRect();
-    mouseX = event.clientX - rect.left;
-    mouseY = event.clientY - rect.top;
-});
+// canvas.addEventListener('mousemove', function(event) {
+//     const rect = canvas.getBoundingClientRect();
+//     mouseX = event.clientX - rect.left;
+//     mouseY = event.clientY - rect.top;
+// });
 
 canvas.addEventListener('touchmove', function(e) {
     const rect = canvas.getBoundingClientRect();
     mouseX = e.touches[0].clientX - rect.left;
     mouseY = e.touches[0].clientY - rect.top;
+
   });
 
 canvas.addEventListener('click', function(event) {
