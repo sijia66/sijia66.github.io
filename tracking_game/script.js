@@ -1,3 +1,9 @@
+// Author: Si Jia Li
+// Date: 2023-04-12
+
+
+
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -43,18 +49,22 @@ function update() {
 
 }
 
-// canvas.addEventListener('mousemove', function(event) {
-//     const rect = canvas.getBoundingClientRect();
-//     mouseX = event.clientX - rect.left;
-//     mouseY = event.clientY - rect.top;
-// });
-
-canvas.addEventListener('touchmove', function(e) {
-    const rect = canvas.getBoundingClientRect();
-    mouseX = e.touches[0].clientX - rect.left;
-    mouseY = e.touches[0].clientY - rect.top;
-
-  });
+// detect if it's a mobile device, yes, use touchmove event; elsewise, use mousemove event
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+    canvas.addEventListener('touchmove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.touches[0].clientX - rect.left;
+        mouseY = e.touches[0].clientY - rect.top;
+    
+      });
+} else {
+    canvas.addEventListener('mousemove', function(event) {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = event.clientX - rect.left;
+        mouseY = event.clientY - rect.top;
+    });
+}
 
 canvas.addEventListener('click', function(event) {
     // rotate color
