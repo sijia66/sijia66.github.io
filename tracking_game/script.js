@@ -48,8 +48,8 @@ class SphereView {
       this.ctx.clearRect(0, 0, canvas.width, canvas.height);
   
       this.drawSphere(this.model.x, canvas.height / 2, this.model.colors[this.model.target_color_index]);
-      this.drawHusky(this.mouseX, this.mouseY);
-      //this.drawSphere(this.mouseX, this.mouseY, this.model.colors[this.mouse_color_index]);
+      //this.drawHusky(this.mouseX, this.mouseY);
+      this.drawSphere(this.mouseX, this.mouseY, this.model.colors[this.mouse_color_index]);
     }
   
     onMouseMove(event) {
